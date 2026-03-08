@@ -1,70 +1,760 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" class="scroll-smooth">
 <head>
-<title>AP Cuts</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
-<style>
-body{
-font-family:Arial;
-margin:0;
-background:#111;
-color:white;
-text-align:center;
-}
-
-.hero{
-padding:100px 20px;
-background:#000;
-}
-
-.hero h1{
-font-size:60px;
-}
-
-.hero p{
-font-size:22px;
-}
-
-.services{
-padding:50px;
-background:#222;
-}
-
-.service{
-margin:10px;
-font-size:20px;
-}
-
-.footer{
-padding:40px;
-background:black;
-}
-</style>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A&P Cuts | Premium Barbershop & Grooming</title>
+    <meta name="description" content="Premium barbershop offering expert haircuts, beard trims, and grooming services. Book your appointment today.">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        gold: {
+                            400: '#D4AF37',
+                            500: '#C5A028',
+                            600: '#B4901F',
+                        },
+                        dark: {
+                            900: '#0a0a0a',
+                            800: '#141414',
+                            700: '#1a1a1a',
+                        }
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.5s ease-in',
+                        'slide-up': 'slideUp 0.6s ease-out',
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(20px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        .glass-effect {
+            background: rgba(20, 20, 20, 0.8);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+        
+        .text-gradient {
+            background: linear-gradient(135deg, #D4AF37 0%, #FFF 50%, #D4AF37 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hover-lift {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .hover-lift:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(212, 175, 55, 0.1);
+        }
+        
+        .image-mask {
+            mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+            -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+        }
+        
+        .line-through-hover {
+            position: relative;
+        }
+        
+        .line-through-hover::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: #D4AF37;
+            transition: width 0.3s ease;
+        }
+        
+        .line-through-hover:hover::after {
+            width: 100%;
+        }
+        
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
 </head>
+<body class="bg-dark-900 text-gray-100 font-sans antialiased overflow-x-hidden">
 
-<body>
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 top-0">
+        <div class="glass-effect border-b border-white/10">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between items-center h-20">
+                    <!-- Logo -->
+                    <div class="flex-shrink-0 flex items-center gap-2 cursor-pointer" onclick="window.scrollTo(0,0)">
+                        <i data-lucide="scissors" class="w-8 h-8 text-gold-400"></i>
+                        <span class="font-serif text-2xl font-bold text-white tracking-wider">A&P<span class="text-gold-400">Cuts</span></span>
+                    </div>
 
-<div class="hero">
-<h1>AP Cuts</h1>
-<p>Precision Cuts & Modern Styles</p>
-</div>
+                    <!-- Desktop Menu -->
+                    <div class="hidden md:flex items-center space-x-8">
+                        <a href="#home" class="text-sm font-medium text-gray-300 hover:text-gold-400 transition-colors line-through-hover">Home</a>
+                        <a href="#about" class="text-sm font-medium text-gray-300 hover:text-gold-400 transition-colors line-through-hover">About</a>
+                        <a href="#services" class="text-sm font-medium text-gray-300 hover:text-gold-400 transition-colors line-through-hover">Services</a>
+                        <a href="#gallery" class="text-sm font-medium text-gray-300 hover:text-gold-400 transition-colors line-through-hover">Gallery</a>
+                        <a href="#team" class="text-sm font-medium text-gray-300 hover:text-gold-400 transition-colors line-through-hover">Team</a>
+                        <a href="#contact" class="text-sm font-medium text-gray-300 hover:text-gold-400 transition-colors line-through-hover">Contact</a>
+                        <button onclick="openBooking()" class="bg-gold-500 hover:bg-gold-400 text-dark-900 font-semibold px-6 py-2.5 rounded-full transition-all duration-300 hover:scale-105 flex items-center gap-2">
+                            <i data-lucide="calendar" class="w-4 h-4"></i>
+                            Book Now
+                        </button>
+                    </div>
 
-<div class="services">
-<h2>Services</h2>
+                    <!-- Mobile menu button -->
+                    <div class="md:hidden flex items-center">
+                        <button onclick="toggleMobileMenu()" class="text-gray-300 hover:text-white focus:outline-none">
+                            <i data-lucide="menu" class="w-6 h-6" id="mobile-menu-icon"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
 
-<div class="service">Haircut — $30</div>
-<div class="service">Beard Trim — $15</div>
-<div class="service">Haircut + Beard — $40</div>
-<div class="service">Kids Haircut — $20</div>
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="hidden md:hidden bg-dark-800 border-t border-white/10">
+                <div class="px-4 pt-2 pb-6 space-y-1">
+                    <a href="#home" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-gold-400 hover:bg-white/5 rounded-md">Home</a>
+                    <a href="#about" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-gold-400 hover:bg-white/5 rounded-md">About</a>
+                    <a href="#services" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-gold-400 hover:bg-white/5 rounded-md">Services</a>
+                    <a href="#gallery" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-gold-400 hover:bg-white/5 rounded-md">Gallery</a>
+                    <a href="#team" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-gold-400 hover:bg-white/5 rounded-md">Team</a>
+                    <a href="#contact" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-gold-400 hover:bg-white/5 rounded-md">Contact</a>
+                    <button onclick="openBooking()" class="w-full mt-4 bg-gold-500 hover:bg-gold-400 text-dark-900 font-semibold px-6 py-3 rounded-full transition-all duration-300 flex items-center justify-center gap-2">
+                        <i data-lucide="calendar" class="w-4 h-4"></i>
+                        Book Appointment
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
 
-</div>
+    <!-- Hero Section -->
+    <section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <!-- Background Image with Overlay -->
+        <div class="absolute inset-0 z-0">
+            <img src="http://static.photos/barbershop/1200x630/42" alt="Barbershop Interior" class="w-full h-full object-cover opacity-40">
+            <div class="absolute inset-0 bg-gradient-to-b from-dark-900/80 via-dark-900/60 to-dark-900"></div>
+        </div>
 
-<div class="footer">
-<p>AP Cuts Barbershop</p>
-<p>Open Mon-Sat</p>
-</div>
+        <!-- Decorative Elements -->
+        <div class="absolute top-1/4 left-10 w-px h-40 bg-gradient-to-b from-transparent via-gold-400 to-transparent opacity-50"></div>
+        <div class="absolute bottom-1/4 right-10 w-px h-40 bg-gradient-to-b from-transparent via-gold-400 to-transparent opacity-50"></div>
 
+        <!-- Content -->
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="reveal active">
+                <p class="text-gold-400 font-medium tracking-[0.3em] uppercase text-sm mb-4 animate-fade-in">Est. 2015 • Premium Grooming</p>
+                <h1 class="font-serif text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-6 leading-tight">
+                    Where Style<br>
+                    <span class="text-gradient">Meets Precision</span>
+                </h1>
+                <p class="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed">
+                    Experience the art of traditional barbering with modern techniques. Premium cuts, hot towel shaves, and grooming services tailored to your style.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                    <button onclick="openBooking()" class="bg-gold-500 hover:bg-gold-400 text-dark-900 font-bold px-8 py-4 rounded-full transition-all duration-300 hover:scale-105 flex items-center gap-2 text-lg">
+                        <i data-lucide="scissors" class="w-5 h-5"></i>
+                        Book Appointment
+                    </button>
+                    <a href="#services" class="border border-white/20 hover:border-gold-400 text-white hover:text-gold-400 font-medium px-8 py-4 rounded-full transition-all duration-300 flex items-center gap-2 text-lg backdrop-blur-sm">
+                        <i data-lucide="list" class="w-5 h-5"></i>
+                        View Services
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Stats -->
+            <div class="mt-16 grid grid-cols-3 gap-8 max-w-3xl mx-auto border-t border-white/10 pt-8 reveal">
+                <div class="text-center">
+                    <p class="text-3xl md:text-4xl font-serif font-bold text-gold-400">8+</p>
+                    <p class="text-gray-400 text-sm mt-1">Years Experience</p>
+                </div>
+                <div class="text-center border-x border-white/10">
+                    <p class="text-3xl md:text-4xl font-serif font-bold text-gold-400">15K+</p>
+                    <p class="text-gray-400 text-sm mt-1">Happy Clients</p>
+                </div>
+                <div class="text-center">
+                    <p class="text-3xl md:text-4xl font-serif font-bold text-gold-400">4.9</p>
+                    <p class="text-gray-400 text-sm mt-1">Rating</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <i data-lucide="chevron-down" class="w-6 h-6 text-gold-400"></i>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 md:py-32 bg-dark-800 relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-gold-500/5 to-transparent"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid md:grid-cols-2 gap-12 lg:gap-20 items-center">
+                <div class="reveal">
+                    <div class="relative">
+                        <img src="http://static.photos/barbershop/640x800/123" alt="Barber at work" class="rounded-2xl shadow-2xl w-full object-cover h-[500px]">
+                        <div class="absolute -bottom-6 -right-6 bg-gold-500 text-dark-900 p-6 rounded-2xl shadow-xl">
+                            <p class="font-serif text-3xl font-bold">8+</p>
+                            <p class="text-sm font-medium">Years of Excellence</p>
+                        </div>
+                        <div class="absolute -top-4 -left-4 w-24 h-24 border-2 border-gold-400 rounded-2xl -z-10"></div>
+                    </div>
+                </div>
+                
+                <div class="reveal">
+                    <p class="text-gold-400 font-medium tracking-wider uppercase text-sm mb-3">About Us</p>
+                    <h2 class="font-serif text-4xl md:text-5xl font-bold text-white mb-6">Crafting Confidence Through Expert Grooming</h2>
+                    <p class="text-gray-400 text-lg mb-6 leading-relaxed">
+                        Founded in 2015, A&P Cuts has been the premier destination for men who value quality grooming. We blend traditional barbering techniques with contemporary styles to deliver an unmatched experience.
+                    </p>
+                    <p class="text-gray-400 text-lg mb-8 leading-relaxed">
+                        Our master barbers are trained in the latest trends while honoring classic cuts. Whether you need a quick trim or a complete style transformation, we ensure every visit leaves you looking sharp and feeling confident.
+                    </p>
+                    
+                    <div class="grid grid-cols-2 gap-6 mb-8">
+                        <div class="flex items-start gap-3">
+                            <div class="bg-gold-500/20 p-2 rounded-lg">
+                                <i data-lucide="award" class="w-5 h-5 text-gold-400"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-white mb-1">Certified Barbers</h4>
+                                <p class="text-sm text-gray-400">Licensed professionals</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <div class="bg-gold-500/20 p-2 rounded-lg">
+                                <i data-lucide="sparkles" class="w-5 h-5 text-gold-400"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-white mb-1">Premium Products</h4>
+                                <p class="text-sm text-gray-400">Top-tier grooming</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <a href="#team" class="inline-flex items-center text-gold-400 font-medium hover:text-gold-500 transition-colors gap-2 group">
+                        Meet Our Team
+                        <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 md:py-32 bg-dark-900 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <p class="text-gold-400 font-medium tracking-wider uppercase text-sm mb-3">Our Services</p>
+                <h2 class="font-serif text-4xl md:text-5xl font-bold text-white mb-4">Premium Grooming Services</h2>
+                <p class="text-gray-400 text-lg max-w-2xl mx-auto">From classic cuts to modern styles, we offer a complete range of grooming services tailored to your needs.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service Card 1 -->
+                <div class="group bg-dark-800 rounded-2xl p-8 hover-lift border border-white/5 hover:border-gold-400/30 transition-all duration-300 reveal">
+                    <div class="w-14 h-14 bg-gold-500/20 rounded-xl flex items-center justify-center mb-6 group-hover:bg-gold-500 transition-colors duration-300">
+                        <i data-lucide="scissors" class="w-7 h-7 text-gold-400 group-hover:text-dark-900"></i>
+                    </div>
+                    <h3 class="font-serif text-2xl font-bold text-white mb-3">Haircut</h3>
+                    <p class="text-gray-400 mb-4 leading-relaxed">Precision cutting with consultation, shampoo, and styling. Includes neckline cleanup with razor.</p>
+                    <div class="flex items-center justify-between pt-4 border-t border-white/10">
+                        <span class="text-gold-400 font-serif text-2xl font-bold">$35</span>
+                        <span class="text-gray-500 text-sm">45 min</span>
+                    </div>
+                </div>
+
+                <!-- Service Card 2 -->
+                <div class="group bg-dark-800 rounded-2xl p-8 hover-lift border border-white/5 hover:border-gold-400/30 transition-all duration-300 reveal">
+                    <div class="w-14 h-14 bg-gold-500/20 rounded-xl flex items-center justify-center mb-6 group-hover:bg-gold-500 transition-colors duration-300">
+                        <i data-lucide="sparkles" class="w-7 h-7 text-gold-400 group-hover:text-dark-900"></i>
+                    </div>
+                    <h3 class="font-serif text-2xl font-bold text-white mb-3">Beard Trim</h3>
+                    <p class="text-gray-400 mb-4 leading-relaxed">Expert beard shaping and trimming. Hot towel treatment and straight razor finish included.</p>
+                    <div class="flex items-center justify-between pt-4 border-t border-white/10">
+                        <span class="text-gold-400 font-serif text-2xl font-bold">$25</span>
+                        <span class="text-gray-500 text-sm">30 min</span>
+                    </div>
+                </div>
+
+                <!-- Service Card 3 -->
+                <div class="group bg-dark-800 rounded-2xl p-8 hover-lift border border-white/5 hover:border-gold-400/30 transition-all duration-300 reveal">
+                    <div class="w-14 h-14 bg-gold-500/20 rounded-xl flex items-center justify-center mb-6 group-hover:bg-gold-500 transition-colors duration-300">
+                        <i data-lucide="crown" class="w-7 h-7 text-gold-400 group-hover:text-dark-900"></i>
+                    </div>
+                    <h3 class="font-serif text-2xl font-bold text-white mb-3">Hot Towel Shave</h3>
+                    <p class="text-gray-400 mb-4 leading-relaxed">Traditional straight razor shave with hot towels, pre-shave oil, and aftershave balm.</p>
+                    <div class="flex items-center justify-between pt-4 border-t border-white/10">
+                        <span class="text-gold-400 font-serif text-2xl font-bold">$40</span>
+                        <span class="text-gray-500 text-sm">45 min</span>
+                    </div>
+                </div>
+
+                <!-- Service Card 4 -->
+                <div class="group bg-dark-800 rounded-2xl p-8 hover-lift border border-white/5 hover:border-gold-400/30 transition-all duration-300 reveal">
+                    <div class="w-14 h-14 bg-gold-500/20 rounded-xl flex items-center justify-center mb-6 group-hover:bg-gold-500 transition-colors duration-300">
+                        <i data-lucide="user" class="w-7 h-7 text-gold-400 group-hover:text-dark-900"></i>
+                    </div>
+                    <h3 class="font-serif text-2xl font-bold text-white mb-3">Hair & Beard Combo</h3>
+                    <p class="text-gray-400 mb-4 leading-relaxed">Complete grooming package. Haircut, beard trim, hot towel treatment, and styling.</p>
+                    <div class="flex items-center justify-between pt-4 border-t border-white/10">
+                        <span class="text-gold-400 font-serif text-2xl font-bold">$55</span>
+                        <span class="text-gray-500 text-sm">75 min</span>
+                    </div>
+                </div>
+
+                <!-- Service Card 5 -->
+                <div class="group bg-dark-800 rounded-2xl p-8 hover-lift border border-white/5 hover:border-gold-400/30 transition-all duration-300 reveal">
+                    <div class="w-14 h-14 bg-gold-500/20 rounded-xl flex items-center justify-center mb-6 group-hover:bg-gold-500 transition-colors duration-300">
+                        <i data-lucide="paintbrush" class="w-7 h-7 text-gold-400 group-hover:text-dark-900"></i>
+                    </div>
+                    <h3 class="font-serif text-2xl font-bold text-white mb-3">Hair Design</h3>
+                    <p class="text-gray-400 mb-4 leading-relaxed">Custom hair designs, fades, and artistic patterns. Perfect for making a bold statement.</p>
+                    <div class="flex items-center justify-between pt-4 border-t border-white/10">
+                        <span class="text-gold-400 font-serif text-2xl font-bold">$45</span>
+                        <span class="text-gray-500 text-sm">60 min</span>
+                    </div>
+                </div>
+
+                <!-- Service Card 6 -->
+                <div class="group bg-dark-800 rounded-2xl p-8 hover-lift border border-white/5 hover:border-gold-400/30 transition-all duration-300 reveal">
+                    <div class="w-14 h-14 bg-gold-500/20 rounded-xl flex items-center justify-center mb-6 group-hover:bg-gold-500 transition-colors duration-300">
+                        <i data-lucide="baby" class="w-7 h-7 text-gold-400 group-hover:text-dark-900"></i>
+                    </div>
+                    <h3 class="font-serif text-2xl font-bold text-white mb-3">Kids Cut</h3>
+                    <p class="text-gray-400 mb-4 leading-relaxed">Gentle and patient service for kids under 12. Includes wash, cut, and style.</p>
+                    <div class="flex items-center justify-between pt-4 border-t border-white/10">
+                        <span class="text-gold-400 font-serif text-2xl font-bold">$25</span>
+                        <span class="text-gray-500 text-sm">30 min</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-12 text-center reveal">
+                <button onclick="openBooking()" class="bg-transparent border-2 border-gold-400 text-gold-400 hover:bg-gold-400 hover:text-dark-900 font-semibold px-8 py-4 rounded-full transition-all duration-300 inline-flex items-center gap-2">
+                    <i data-lucide="calendar-plus" class="w-5 h-5"></i>
+                    Book Any Service
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-20 md:py-32 bg-dark-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <p class="text-gold-400 font-medium tracking-wider uppercase text-sm mb-3">Portfolio</p>
+                <h2 class="font-serif text-4xl md:text-5xl font-bold text-white mb-4">Our Latest Work</h2>
+                <p class="text-gray-400 text-lg max-w-2xl mx-auto">Browse through our portfolio of precision cuts and styles.</p>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="group relative overflow-hidden rounded-xl cursor-pointer reveal">
+                    <img src="http://static.photos/barbershop/400x500/1" alt="Haircut 1" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-dark-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                        <span class="text-white font-medium">Classic Fade</span>
+                    </div>
+                </div>
+                <div class="group relative overflow-hidden rounded-xl cursor-pointer reveal">
+                    <img src="http://static.photos/barbershop/400x500/2" alt="Haircut 2" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-dark-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                        <span class="text-white font-medium">Textured Crop</span>
+                    </div>
+                </div>
+                <div class="group relative overflow-hidden rounded-xl cursor-pointer reveal">
+                    <img src="http://static.photos/barbershop/400x500/3" alt="Haircut 3" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-dark-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                        <span class="text-white font-medium">Slick Back</span>
+                    </div>
+                </div>
+                <div class="group relative overflow-hidden rounded-xl cursor-pointer reveal">
+                    <img src="http://static.photos/barbershop/400x500/4" alt="Haircut 4" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-dark-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                        <span class="text-white font-medium">Beard Design</span>
+                    </div>
+                </div>
+                <div class="group relative overflow-hidden rounded-xl cursor-pointer reveal">
+                    <img src="http://static.photos/barbershop/400x500/5" alt="Haircut 5" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-dark-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                        <span class="text-white font-medium">Pompadour</span>
+                    </div>
+                </div>
+                <div class="group relative overflow-hidden rounded-xl cursor-pointer reveal">
+                    <img src="http://static.photos/barbershop/400x500/6" alt="Haircut 6" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-dark-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                        <span class="text-white font-medium">Buzz Cut</span>
+                    </div>
+                </div>
+                <div class="group relative overflow-hidden rounded-xl cursor-pointer reveal">
+                    <img src="http://static.photos/barbershop/400x500/7" alt="Haircut 7" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-dark-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                        <span class="text-white font-medium">Undercut</span>
+                    </div>
+                </div>
+                <div class="group relative overflow-hidden rounded-xl cursor-pointer reveal">
+                    <img src="http://static.photos/barbershop/400x500/8" alt="Haircut 8" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-dark-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                        <span class="text-white font-medium">Side Part</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="py-20 md:py-32 bg-dark-900 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <p class="text-gold-400 font-medium tracking-wider uppercase text-sm mb-3">The Crew</p>
+                <h2 class="font-serif text-4xl md:text-5xl font-bold text-white mb-4">Meet Our Master Barbers</h2>
+                <p class="text-gray-400 text-lg max-w-2xl mx-auto">Skilled professionals dedicated to the craft of traditional barbering.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Team Member 1 -->
+                <div class="group reveal">
+                    <div class="relative overflow-hidden rounded-2xl mb-6">
+                        <img src="http://static.photos/people/400x500/10" alt="Alex" class="w-full h-96 object-cover transition-transform duration-500 group-hover:scale-105 grayscale group-hover:grayscale-0">
+                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-dark-900 to-transparent h-32"></div>
+                        <div class="absolute bottom-4 left-4 right-4 flex justify-between items-end">
+                            <div>
+                                <h3 class="font-serif text-2xl font-bold text-white">Alex Parker</h3>
+                                <p class="text-gold-400">Master Barber</p>
+                            </div>
+                            <div class="flex gap-2">
+                                <a href="#" class="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center hover:bg-gold-500 hover:text-dark-900 transition-all">
+                                    <i data-lucide="instagram" class="w-4 h-4"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-400">Specialist in classic cuts and hot towel shaves with 10 years of experience.</p>
+                </div>
+
+                <!-- Team Member 2 -->
+                <div class="group reveal">
+                    <div class="relative overflow-hidden rounded-2xl mb-6">
+                        <img src="http://static.photos/people/400x500/11" alt="Paul" class="w-full h-96 object-cover transition-transform duration-500 group-hover:scale-105 grayscale group-hover:grayscale-0">
+                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-dark-900 to-transparent h-32"></div>
+                        <div class="absolute bottom-4 left-4 right-4 flex justify-between items-end">
+                            <div>
+                                <h3 class="font-serif text-2xl font-bold text-white">Paul Martinez</h3>
+                                <p class="text-gold-400">Style Director</p>
+                            </div>
+                            <div class="flex gap-2">
+                                <a href="#" class="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center hover:bg-gold-500 hover:text-dark-900 transition-all">
+                                    <i data-lucide="instagram" class="w-4 h-4"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-400">Expert in modern fades, designs, and contemporary styling techniques.</p>
+                </div>
+
+                <!-- Team Member 3 -->
+                <div class="group reveal">
+                    <div class="relative overflow-hidden rounded-2xl mb-6">
+                        <img src="http://static.photos/people/400x500/12" alt="Jordan" class="w-full h-96 object-cover transition-transform duration-500 group-hover:scale-105 grayscale group-hover:grayscale-0">
+                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-dark-900 to-transparent h-32"></div>
+                        <div class="absolute bottom-4 left-4 right-4 flex justify-between items-end">
+                            <div>
+                                <h3 class="font-serif text-2xl font-bold text-white">Jordan Smith</h3>
+                                <p class="text-gold-400">Beard Specialist</p>
+                            </div>
+                            <div class="flex gap-2">
+                                <a href="#" class="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center hover:bg-gold-500 hover:text-dark-900 transition-all">
+                                    <i data-lucide="instagram" class="w-4 h-4"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-400">Beard grooming expert known for precision shaping and styling advice.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-20 md:py-32 bg-dark-800 relative overflow-hidden">
+        <div class="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23D4AF37\' fill-opacity=\'0.05\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-20"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16 reveal">
+                <p class="text-gold-400 font-medium tracking-wider uppercase text-sm mb-3">Testimonials</p>
+                <h2 class="font-serif text-4xl md:text-5xl font-bold text-white mb-4">What Our Clients Say</h2>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-dark-900 p-8 rounded-2xl border border-white/5 reveal">
+                    <div class="flex text-gold-400 mb-4">
+                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                    </div>
+                    <p class="text-gray-300 mb-6 italic">"Best barbershop in town! Alex always gives me the perfect fade. The attention to detail is unmatched."</p>
+                    <div class="flex items-center gap-3">
+                        <img src="http://static.photos/people/100x100/20" alt="Client" class="w-12 h-12 rounded-full object-cover">
+                        <div>
+                            <p class="font-semibold text-white">Michael Chen</p>
+                            <p class="text-sm text-gray-500">Regular Client</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-dark-900 p-8 rounded-2xl border border-white/5 reveal">
+                    <div class="flex text-gold-400 mb-4">
+                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                    </div>
+                    <p class="text-gray-300 mb-6 italic">"The hot towel shave is an experience everyone should try. Professional, relaxing, and impeccably clean."</p>
+                    <div class="flex items-center gap-3">
+                        <img src="http://static.photos/people/100x100/21" alt="Client" class="w-12 h-12 rounded-full object-cover">
+                        <div>
+                            <p class="font-semibold text-white">David Williams</p>
+                            <p class="text-sm text-gray-500">VIP Member</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-dark-900 p-8 rounded-2xl border border-white/5 reveal">
+                    <div class="flex text-gold-400 mb-4">
+                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                    </div>
+                    <p class="text-gray-300 mb-6 italic">"Finally found a place that understands modern styles while keeping that classic barbershop vibe. Love it!"</p>
+                    <div class="flex items-center gap-3">
+                        <img src="http://static.photos/people/100x100/22" alt="Client" class="w-12 h-12 rounded-full object-cover">
+                        <div>
+                            <p class="font-semibold text-white">James Rodriguez</p>
+                            <p class="text-sm text-gray-500">New Client</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 md:py-32 bg-dark-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-12 lg:gap-20">
+                <div class="reveal">
+                    <p class="text-gold-400 font-medium tracking-wider uppercase text-sm mb-3">Visit Us</p>
+                    <h2 class="font-serif text-4xl md:text-5xl font-bold text-white mb-6">Book Your Appointment</h2>
+                    <p class="text-gray-400 text-lg mb-8">Walk-ins welcome, but appointments recommended for the best experience.</p>
+                    
+                    <div class="space-y-6 mb-8">
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 bg-gold-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="map-pin" class="w-6 h-6 text-gold-400"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-white text-lg mb-1">Location</h4>
+                                <p class="text-gray-400">123 Barber Street, Suite 100<br>New York, NY 10001</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 bg-gold-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="clock" class="w-6 h-6 text-gold-400"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-white text-lg mb-1">Hours</h4>
+                                <p class="text-gray-400">Mon-Fri: 9:00 AM - 8:00 PM<br>Sat: 9:00 AM - 6:00 PM<br>Sun: 10:00 AM - 4:00 PM</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 bg-gold-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="phone" class="w-6 h-6 text-gold-400"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-white text-lg mb-1">Contact</h4>
+                                <p class="text-gray-400">(555) 123-4567<br>info@apcuts.com</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-4">
+                        <a href="#" class="w-10 h-10 bg-white/5 rounded-full flex items-center justify-center hover:bg-gold-500 hover:text-dark-900 transition-all">
+                            <i data-lucide="instagram" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-white/5 rounded-full flex items-center justify-center hover:bg-gold-500 hover:text-dark-900 transition-all">
+                            <i data-lucide="facebook" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-white/5 rounded-full flex items-center justify-center hover:bg-gold-500 hover:text-dark-900 transition-all">
+                            <i data-lucide="twitter" class="w-5 h-5"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="bg-dark-800 p-8 rounded-2xl border border-white/5 reveal">
+                    <form onsubmit="handleFormSubmit(event)" class="space-y-6">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-400 mb-2">First Name</label>
+                                <input type="text" required class="w-full bg-dark-900 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gold-400 transition-colors" placeholder="John">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-400 mb-2">Last Name</label>
+                                <input type="text" required class="w-full bg-dark-900 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gold-400 transition-colors" placeholder="Doe">
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-400 mb-2">Email</label>
+                            <input type="email" required class="w-full bg-dark-900 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gold-400 transition-colors" placeholder="john@example.com">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-400 mb-2">Service</label>
+                            <select required class="w-full bg-dark-900 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gold-400 transition-colors">
+                                <option value="">Select a service</option>
+                                <option value="haircut">Haircut - $35</option>
+                                <option value="beard">Beard Trim - $25</option>
+                                <option value="shave">Hot Towel Shave - $40</option>
+                                <option value="combo">Hair & Beard Combo - $55</option>
+                                <option value="design">Hair Design - $45</option>
+                                <option value="kids">Kids Cut - $25</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-400 mb-2">Preferred Date</label>
+                            <input type="date" required class="w-full bg-dark-900 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gold-400 transition-colors">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-400 mb-2">Message (Optional)</label>
+                            <textarea rows="3" class="w-full bg-dark-900 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gold-400 transition-colors" placeholder="Any special requests..."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="w-full bg-gold-500 hover:bg-gold-400 text-dark-900 font-bold py-4 rounded-lg transition-all duration-300 hover:scale-[1.02] flex items-center justify-center gap-2">
+                            <i data-lucide="send" class="w-5 h-5"></i>
+                            Request Appointment
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark-800 border-t border-white/10 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div class="md:col-span-2">
+                    <div class="flex items-center gap-2 mb-4">
+                        <i data-lucide="scissors" class="w-8 h-8 text-gold-400"></i>
+                        <span class="font-serif text-2xl font-bold text-white tracking-wider">A&P<span class="text-gold-400">Cuts</span></span>
+                    </div>
+                    <p class="text-gray-400 mb-6 max-w-md">Premium barbershop offering expert haircuts, beard trims, and grooming services. Where tradition meets modern style.</p>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold text-white mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="text-gray-400 hover:text-gold-400 transition-colors">Home</a></li>
+                        <li><a href="#about" class="text-gray-400 hover:text-gold-400 transition-colors">About</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-gold-400 transition-colors">Services</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-gold-400 transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold text-white mb-4">Services</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#services" class="text-gray-400 hover:text-gold-400 transition-colors">Haircuts</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-gold-400 transition-colors">Beard Trims</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-gold-400 transition-colors">Hot Towel Shaves</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-gold-400 transition-colors">Kids Cuts</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-gray-500 text-sm">&copy; 2024 A&P Cuts. All rights reserved.</p>
+                <div class="flex gap-6 text-sm text-gray-500">
+                    <a href="#" class="hover:text-gold-400 transition-colors">Privacy Policy</a>
+                    <a href="#" class="hover:text-gold-400 transition-colors">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Booking Modal -->
+    <div id="bookingModal" class="fixed inset-0 z-50 hidden">
+        <div class="absolute inset-0 bg-dark-900/90 backdrop-blur-sm" onclick="closeBooking()"></div>
+        <div class="absolute inset-0 flex items-center justify-center p-4">
+            <div class="bg-dark-800 rounded-2xl p-8 max-w-md w-full border border-white/10 relative animate-slide-up">
+                <button onclick="closeBooking()" class="absolute top-4 right-4 text-gray-400 hover:text-white">
+                    <i data-lucide="x" class="w-6 h-6"></i>
+                </button>
+                <div class="text-center mb-6">
+                    <div class="w-16 h-16 bg-gold-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i data-lucide="calendar-check" class="w-8 h-8 text-gold-400"></i>
+                    </div>
+                    <h3 class="font-serif text-2xl font-bold text-white mb-2">Book Appointment</h3>
+                    <p class="text-gray-400">Fill out the form and we'll confirm your appointment shortly.</p>
+                </div>
+                <button onclick="closeBooking(); window.location.href='#contact'" class="w-full bg-gold-500 hover:bg-gold-400 text-dark-900 font-bold py-3 rounded-lg transition-all duration-300">
+                    Go to Booking Form
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+<script src="https://deepsite.hf.co/deepsite-badge.js"></script>
 </body>
 </html>
