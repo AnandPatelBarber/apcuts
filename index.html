@@ -132,10 +132,10 @@
                         <a href="#gallery" class="text-sm font-medium text-gray-300 hover:text-gold-400 transition-colors line-through-hover">Gallery</a>
                         <a href="#team" class="text-sm font-medium text-gray-300 hover:text-gold-400 transition-colors line-through-hover">Team</a>
                         <a href="#contact" class="text-sm font-medium text-gray-300 hover:text-gold-400 transition-colors line-through-hover">Contact</a>
-                        <button onclick="openBooking()" class="bg-gold-500 hover:bg-gold-400 text-dark-900 font-semibold px-6 py-2.5 rounded-full transition-all duration-300 hover:scale-105 flex items-center gap-2">
-                            <i data-lucide="calendar" class="w-4 h-4"></i>
-                            Book Now
-                        </button>
+                       <a href="https://getsqr.co/ap-371" target="_blank" class="bg-gold-500 hover:bg-gold-400 text-dark-900 font-semibold px-6 py-2.5 rounded-full transition-all duration-300 hover:scale-105 flex items-center gap-2">
+    <i data-lucide="calendar" class="w-4 h-4"></i>
+    Book Now
+</a>
                     </div>
 
                     <!-- Mobile menu button -->
@@ -156,10 +156,10 @@
                     <a href="#gallery" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-gold-400 hover:bg-white/5 rounded-md">Gallery</a>
                     <a href="#team" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-gold-400 hover:bg-white/5 rounded-md">Team</a>
                     <a href="#contact" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-gold-400 hover:bg-white/5 rounded-md">Contact</a>
-                    <button onclick="openBooking()" class="w-full mt-4 bg-gold-500 hover:bg-gold-400 text-dark-900 font-semibold px-6 py-3 rounded-full transition-all duration-300 flex items-center justify-center gap-2">
-                        <i data-lucide="calendar" class="w-4 h-4"></i>
-                        Book Appointment
-                    </button>
+                    <a href="https://getsqr.co/ap-371" target="_blank" class="w-full mt-4 bg-gold-500 hover:bg-gold-400 text-dark-900 font-semibold px-6 py-3 rounded-full transition-all duration-300 flex items-center justify-center gap-2">
+    <i data-lucide="calendar" class="w-4 h-4"></i>
+    Book Appointment
+</a>
                 </div>
             </div>
         </div>
@@ -189,10 +189,10 @@
                     Experience the art of traditional barbering with modern techniques. Premium cuts, hot towel shaves, and grooming services tailored to your style.
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                    <button onclick="openBooking()" class="bg-gold-500 hover:bg-gold-400 text-dark-900 font-bold px-8 py-4 rounded-full transition-all duration-300 hover:scale-105 flex items-center gap-2 text-lg">
-                        <i data-lucide="scissors" class="w-5 h-5"></i>
-                        Book Appointment
-                    </button>
+                   <a href="https://getsqr.co/ap-371" target="_blank" class="bg-gold-500 hover:bg-gold-400 text-dark-900 font-bold px-8 py-4 rounded-full inline-flex items-center gap-2">
+    <i data-lucide="scissors" class="w-5 h-5"></i>
+    Book Appointment
+</a>
                     <a href="#services" class="border border-white/20 hover:border-gold-400 text-white hover:text-gold-400 font-medium px-8 py-4 rounded-full transition-all duration-300 flex items-center gap-2 text-lg backdrop-blur-sm">
                         <i data-lucide="list" class="w-5 h-5"></i>
                         View Services
@@ -587,8 +587,8 @@
             <div class="grid md:grid-cols-2 gap-12 lg:gap-20">
                 <div class="reveal">
                     <p class="text-gold-400 font-medium tracking-wider uppercase text-sm mb-3">Visit Us</p>
-                    <h2 class="font-serif text-4xl md:text-5xl font-bold text-white mb-6">Book Your Appointment</h2>
-                    <p class="text-gray-400 text-lg mb-8">Walk-ins welcome, but appointments recommended for the best experience.</p>
+<h2 class="font-serif text-4xl font-bold">Contact Us</h2>
+<p class="text-gray-400">Have a question or want to collaborate? Send us a message.</p>
                     
                     <div class="space-y-6 mb-8">
                         <div class="flex items-start gap-4">
@@ -656,30 +656,29 @@
 </div>
 
 <div>
-    <label class="block text-sm font-medium text-gray-400 mb-2">Service</label>
+    <label class="block text-sm font-medium text-gray-400 mb-2">Inquiry Type</label>
     <select name="service" required class="w-full bg-dark-900 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gold-400 transition-colors">
-        <option value="">Select a service</option>
-        <option value="haircut">Haircut - $35</option>
-        <option value="beard">Beard Trim - $25</option>
-        <option value="shave">Hot Towel Shave - $40</option>
-        <option value="combo">Hair & Beard Combo - $55</option>
-        <option value="design">Hair Design - $45</option>
-        <option value="kids">Kids Cut - $25</option>
+   <option value="">Select inquiry type</option>
+<option value="partnership">Business Partnership</option>
+<option value="brand">Brand Collaboration</option>
+<option value="barber">Barber Position</option>
+<option value="event">Event / Promotion</option>
+<option value="general">General Question</option>
     </select>
 </div>
 
 <div>
-    <label class="block text-sm font-medium text-gray-400 mb-2">Preferred Date</label>
-    <input name="date" type="date" required class="w-full bg-dark-900 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gold-400 transition-colors">
+    <label class="block text-sm font-medium text-gray-400 mb-2">Phone Number</label>
+    <input type="tel" required class="w-full bg-dark-900 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gold-400 transition-colors" placeholder="(555) 555-5555">
 </div>
 
 <div>
     <label class="block text-sm font-medium text-gray-400 mb-2">Message (Optional)</label>
-    <textarea name="message" rows="3" class="w-full bg-dark-900 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gold-400 transition-colors" placeholder="Any special requests..."></textarea>
+    <textarea name="message" rows="3" class="w-full bg-dark-900 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gold-400 transition-colors" placeholder="Tell us about your partnership idea or question..."></textarea>
 </div>
 
 <button type="submit" class="w-full bg-gold-500 hover:bg-gold-400 text-dark-900 font-bold py-4 rounded-lg transition-all duration-300 hover:scale-[1.02] flex items-center justify-center gap-2">
-    Request Appointment
+    Send Message
 </button>
 
 </form>

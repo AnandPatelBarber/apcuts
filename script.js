@@ -80,7 +80,7 @@ function handleFormSubmit(e) {
     const btn = e.target.querySelector('button[type="submit"]');
     const originalText = btn.innerHTML;
     
-    btn.innerHTML = '<i data-lucide="check" class="w-5 h-5"></i> Appointment Requested!';
+    btn.innerHTML = '<i data-lucide="check" class="w-5 h-5"></i> Message Sent!';
     btn.classList.add('bg-green-600', 'text-white');
     btn.classList.remove('bg-gold-500', 'text-dark-900');
     lucide.createIcons();
