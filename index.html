@@ -636,51 +636,53 @@
                 </div>
 
                 <div class="bg-dark-800 p-8 rounded-2xl border border-white/5 reveal">
-                    <form onsubmit="handleFormSubmit(event)" class="space-y-6">
-                        <div class="grid md:grid-cols-2 gap-6">
-                            <div>
-                                <label class="block text-sm font-medium text-gray-400 mb-2">First Name</label>
-                                <input type="text" required class="w-full bg-dark-900 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gold-400 transition-colors" placeholder="John">
-                            </div>
-                            <div>
-                                <label class="block text-sm font-medium text-gray-400 mb-2">Last Name</label>
-                                <input type="text" required class="w-full bg-dark-900 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gold-400 transition-colors" placeholder="Doe">
-                            </div>
-                        </div>
-                        
-                        <div>
-                            <label class="block text-sm font-medium text-gray-400 mb-2">Email</label>
-                            <input type="email" required class="w-full bg-dark-900 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gold-400 transition-colors" placeholder="john@example.com">
-                        </div>
-                        
-                        <div>
-                            <label class="block text-sm font-medium text-gray-400 mb-2">Service</label>
-                            <select required class="w-full bg-dark-900 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gold-400 transition-colors">
-                                <option value="">Select a service</option>
-                                <option value="haircut">Haircut - $35</option>
-                                <option value="beard">Beard Trim - $25</option>
-                                <option value="shave">Hot Towel Shave - $40</option>
-                                <option value="combo">Hair & Beard Combo - $55</option>
-                                <option value="design">Hair Design - $45</option>
-                                <option value="kids">Kids Cut - $25</option>
-                            </select>
-                        </div>
-                        
-                        <div>
-                            <label class="block text-sm font-medium text-gray-400 mb-2">Preferred Date</label>
-                            <input type="date" required class="w-full bg-dark-900 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gold-400 transition-colors">
-                        </div>
-                        
-                        <div>
-                            <label class="block text-sm font-medium text-gray-400 mb-2">Message (Optional)</label>
-                            <textarea rows="3" class="w-full bg-dark-900 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gold-400 transition-colors" placeholder="Any special requests..."></textarea>
-                        </div>
-                        
-                        <button type="submit" class="w-full bg-gold-500 hover:bg-gold-400 text-dark-900 font-bold py-4 rounded-lg transition-all duration-300 hover:scale-[1.02] flex items-center justify-center gap-2">
-                            <i data-lucide="send" class="w-5 h-5"></i>
-                            Request Appointment
-                        </button>
-                    </form>
+			<form action="https://formspree.io/f/xbdzlypb" method="POST" class="space-y-6">
+
+<div class="grid md:grid-cols-2 gap-6">
+    <div>
+        <label class="block text-sm font-medium text-gray-400 mb-2">First Name</label>
+        <input name="first_name" type="text" required class="w-full bg-dark-900 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gold-400 transition-colors" placeholder="John">
+    </div>
+
+    <div>
+        <label class="block text-sm font-medium text-gray-400 mb-2">Last Name</label>
+        <input name="last_name" type="text" required class="w-full bg-dark-900 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gold-400 transition-colors" placeholder="Doe">
+    </div>
+</div>
+
+<div>
+    <label class="block text-sm font-medium text-gray-400 mb-2">Email</label>
+    <input name="email" type="email" required class="w-full bg-dark-900 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gold-400 transition-colors" placeholder="john@example.com">
+</div>
+
+<div>
+    <label class="block text-sm font-medium text-gray-400 mb-2">Service</label>
+    <select name="service" required class="w-full bg-dark-900 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gold-400 transition-colors">
+        <option value="">Select a service</option>
+        <option value="haircut">Haircut - $35</option>
+        <option value="beard">Beard Trim - $25</option>
+        <option value="shave">Hot Towel Shave - $40</option>
+        <option value="combo">Hair & Beard Combo - $55</option>
+        <option value="design">Hair Design - $45</option>
+        <option value="kids">Kids Cut - $25</option>
+    </select>
+</div>
+
+<div>
+    <label class="block text-sm font-medium text-gray-400 mb-2">Preferred Date</label>
+    <input name="date" type="date" required class="w-full bg-dark-900 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gold-400 transition-colors">
+</div>
+
+<div>
+    <label class="block text-sm font-medium text-gray-400 mb-2">Message (Optional)</label>
+    <textarea name="message" rows="3" class="w-full bg-dark-900 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gold-400 transition-colors" placeholder="Any special requests..."></textarea>
+</div>
+
+<button type="submit" class="w-full bg-gold-500 hover:bg-gold-400 text-dark-900 font-bold py-4 rounded-lg transition-all duration-300 hover:scale-[1.02] flex items-center justify-center gap-2">
+    Request Appointment
+</button>
+
+</form>
                 </div>
             </div>
         </div>
